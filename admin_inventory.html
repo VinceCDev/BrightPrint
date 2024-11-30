@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory</title>
+    <link rel="icon" href="image/logo.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.4.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/admin_inventory.css">
+</head>
+<body>
+    <div class="d-flex">
+        <nav class="sidebar p-3">
+            <div class="d-flex justify-content-between align-items-center">
+                <div class="logoname">
+                    <img src="image/logo.png" alt="Logo of the Website" height="50px" weight="50px" />
+                    <h3>BrightPrint</h3>
+                </div>
+                <button class="navbar-toggler d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+            <div class="collapse d-md-block" id="sidebarMenu">
+                <div class="nav flex-column">
+                    <a class="nav-link" href="admin_dashboard.html">
+                            <span class="icon-box"><i class="fas fa-tachometer-alt"></i></span> <span class="nav">Dashboard</span>
+                    </a>
+                    <a class="nav-link" id="important" href="admin_inventory.html">
+                            <span class="icon-box"><i class="fas fa-user-graduate"></i></span> <span>Inventory</span>
+                    </a>
+                    <a class="nav-link" href="admin_sales.html">
+                            <span class="icon-box"><i class="fas fa-book"></i></span> <span>Sales</span>
+                    </a>
+                    <a class="nav-link" href="admin_accounting.html">
+                            <span class="icon-box"><i class="fas fa-tasks"></i></span> <span>Accounting</span>
+                    </a>
+                    <a class="nav-link" href="admin_service.html">
+                            <span class="icon-box"><i class="fas fa-file"></i></span> <span>Service</span>
+                    </a>
+                    <a class="nav-link" href="admin_customer.html">
+                            <span class="icon-box"><i class="fas fa-clipboard"></i></span> <span>Customer</span>
+                    </a>
+                    <a class="nav-link" href="admin_workforce.html">
+                            <span class="icon-box"><i class="fas fa-comments"></i></span> <span>Workforce</span>
+                    </a>
+                    <a class="nav-link" href="admin_reports.html" id="reportsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <span class="icon-box"><i class="fas fa-chart-pie"></i></span> <span>Reports</span>
+                    </a>                    
+                </div>
+            </div>
+        </nav>
+
+        <div class="main-content container-fluid">
+            <header class="header d-flex justify-content-between align-items-center p-3">
+                <button class="btn btn-outline-primary hamburger-btn" type="button" id="toggleSidebar" onclick="toggleSidebar()">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+                      <path fill-rule="evenodd" d="M3 12.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5z"/>
+                    </svg>
+                  </button>
+                <div id="dash" class="text-center flex-grow-1">
+                    <h3>Welcome, Admin</h3>
+                    <div class="date">
+                        <p id="date"></p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="profile d-flex align-items-center ms-3">
+                        <img src="image/logo.png" alt="Profile" height="60px" width="60px" />
+                        <div class="details ms-2 d-none d-md-block">
+                            <h5>Admin Name</h5>
+                        </div>
+                    </div>
+                    <div class="popup-container shadow" style="display: none;">
+                        <div class="popup-header">
+                            <img src="image/logo.png" alt="User Image" class="user-image">
+                            <div class="dt">
+                                <h5>Admin Name</h5>
+                                <p>Admin</p>
+                            </div>
+                            <button class="close-btn">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        </div>
+                        <hr>
+                        <nav class="popup-nav">
+                            <a href="admin_profile.html" class="popup-nav-item">
+                                <i class="bi bi-person"></i> View Profile
+                            </a>
+                            <a href="forgot_password.html" class="popup-nav-item">
+                                <i class="bi bi-key"></i> Forgot Password
+                            </a>
+                            <a href="#" class="popup-nav-item">
+                                <i class="bi bi-calendar"></i> Calendar
+                            </a>
+                            <hr>
+                            <a href="login.html" class="popup-nav-item logout">
+                                <i class="bi bi-box-arrow-right"></i> Log Out
+                            </a>
+                        </nav>
+                    </div>                          
+                </div>
+            </header>
+
+            
+            <div class="content container">
+                <div class="clearfix">
+                    <div class="view-toggle">
+                        <button id="gridView">
+                            <i class="fas fa-th-large"></i> Main
+                        </button>
+                        <button id="listView">
+                            <i class="fas fa-list"></i> Sub 
+                        </button>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-12">
+                        <div class="container table-container">
+                            <div class="d-flex justify-content-between align-items-center mb-3"> 
+                                <div>
+                                    <!-- Add Item Button -->
+                                    <button class="btn btn-success d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#addItemModal">
+                                         Add Item <i class="fas fa-plus me-2"></i>
+                                    </button>
+                                </div>
+                                <div class="button-container d-flex justify-content-between align-items-center">
+                                    <!-- Download PDF Button -->
+                                    <button class="btn btn-primary d-flex align-items-center" id="downloadPdfBtn" onclick="downloadPDF()">
+                                        Download PDF <i class="fas fa-file-pdf me-2"></i>
+                                    </button>                                    
+                                
+                                    <!-- Download Excel Button -->
+                                    <button class="btn btn-info d-flex align-items-center" id="downloadExcelBtn" onclick="downloadExcel()">
+                                        Download Excel <i class="fas fa-file-excel me-2"></i>
+                                    </button>
+                                </div>                                                       
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex align-items-center">
+                                    <p class="mb-0 me-2">Show Entries</p>
+                                    <!-- Show Entries Dropdown -->
+                                    <select class="form-select custom-select">
+                                        <option value=""></option>
+                                    </select>
+                                </div>
+
+                                <div class="d-flex align-items-center search-container">
+                                    <i class="fas fa-search search-icon me-2"></i>
+                                    <input 
+                                        type="text" 
+                                        id="searchInput" 
+                                        class="search-input" 
+                                        placeholder="Search here..." 
+                                        onkeyup="filterTable()"
+                                    >
+                                    <i class="fas fa-times clear-icon" onclick="clearSearch()"></i>
+                                </div>                                      
+                            </div>
+            
+                            <!-- Inventory Table -->
+                            <table class="table align-middle" id="inventoryTable">
+                                <thead>
+                                    <tr>
+                                        <th>Item Name</th>
+                                        <th>Category</th>
+                                        <th>Quantity</th>
+                                        <th>Price</th>
+                                        <th>Status</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Dynamic table rows will be inserted here -->
+                                </tbody>
+                            </table>
+            
+                            <div class="pagination-container">
+                                <div class="results-info">Showing 1-5 of 10 data</div>
+                                <ul class="pagination">
+                                    <li><a href="#" class="prev">&#8249;</a></li>
+                                    <li><a href="#" class="active">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">4</a></li>
+                                    <li><a href="#">5</a></li>
+                                    <li><a href="#" class="next">&#8250;</a></li>
+                                </ul>
+                            </div>                                                        
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- Modal for Add Item -->
+                <div class="modal fade" id="addItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addItemModalLabel">Add New Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addItemForm">
+                                    <div class="mb-3">
+                                        <label for="itemName" class="form-label">Item Name</label>
+                                        <input type="text" class="form-control" id="itemName" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemCategory" class="form-label">Category</label>
+                                        <select class="form-select" id="itemCategory">
+                                            <option value="Printing">Printing</option>
+                                            <option value="Merchandise">Merchandise</option>
+                                            <option value="School Supplies">School Supplies</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemQuantity" class="form-label">Quantity</label>
+                                        <input type="number" class="form-control" id="itemQuantity" >
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemPrice" class="form-label">Price</label>
+                                        <input type="number" class="form-control" id="itemPrice">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemStatus" class="form-label">Status</label>
+                                        <select class="form-select" id="itemStatus">
+                                            <option value="Available">Available</option>
+                                            <option value="Out of Stock">Out of Stock</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeModal('addItemModal')">Cancel</button>
+                                        <button type="submit" class="btn btn-custom">Add Item</button>
+                                    </div>                                    
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="editItemModal" tabindex="-1" aria-labelledby="addItemModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="addItemModalLabel">Add New Item</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="addItemForm">
+                                    <div class="mb-3">
+                                        <label for="itemName" class="form-label">Item Name</label>
+                                        <input type="text" class="form-control" id="itemName" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemCategory" class="form-label">Category</label>
+                                        <select class="form-select" id="itemCategory">
+                                            <option value="Printing">Printing</option>
+                                            <option value="Merchandise">Merchandise</option>
+                                            <option value="School Supplies">School Supplies</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemQuantity" class="form-label">Quantity</label>
+                                        <input type="number" class="form-control" id="itemQuantity" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemPrice" class="form-label">Price</label>
+                                        <input type="number" class="form-control" id="itemPrice" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="itemStatus" class="form-label">Status</label>
+                                        <select class="form-select" id="itemStatus">
+                                            <option value="Available">Available</option>
+                                            <option value="Out of Stock">Out of Stock</option>
+                                        </select>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="closeModal('addItemModal')">Cancel</button>
+                                        <button type="submit" class="btn btn-custom">Add Item</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+    <script src="js/admin_inventory.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/js/all.min.js"></script>
+</body>
+</html>
